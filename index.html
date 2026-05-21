@@ -319,10 +319,6 @@
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
-  function scrollBottom() {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  }
-
   // ── Type a command char by char ──────────────────────────────
   async function typeCmd(el, cmd) {
     const span = el.querySelector('.cmd');
@@ -351,7 +347,6 @@
         await sleep(200);
         await typeCmd(el, step.cmd);
         await sleep(LINE_PAUSE);
-        scrollBottom();
         continue;
       }
 
@@ -360,7 +355,6 @@
         body.appendChild(el);
         el.classList.add('visible');
         await sleep(OUTPUT_PAUSE);
-        scrollBottom();
         continue;
       }
 
@@ -369,7 +363,6 @@
         body.appendChild(el);
         el.classList.add('visible');
         await sleep(OUTPUT_PAUSE + 60);
-        scrollBottom();
         continue;
       }
 
@@ -379,7 +372,6 @@
         await sleep(120);
         block.classList.add('visible');
         await sleep(OUTPUT_PAUSE * 3);
-        scrollBottom();
         continue;
       }
 
@@ -387,7 +379,6 @@
         const el = makeIdlePrompt();
         body.appendChild(el);
         el.classList.add('visible');
-        scrollBottom();
         continue;
       }
     }
